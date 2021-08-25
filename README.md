@@ -15,7 +15,9 @@ nohup nextflow run pipe-sc-mkfastq-10x.nf > log.pipe-sc-mkfastq-10x.txt &
 
 ## Input files
 
-1 - Samplesheet
+The following files must be in the runfolder to start pipeline successfully.
+
+1. Samplesheet (`CTG_SampleSheet.sc-mkfastq-10x.csv`)
 
 ### Samplesheet requirements:
 
