@@ -3,6 +3,16 @@
 
 - Designed to handle multiple projects in one sequencing run (but also works with only one project)
 
+## Pipeline steps:
+
+Cellranger version: cellranger v6.0 
+
+* `Demultiplexing` (cellranger mkfastq): Converts raw basecalls to fastq, and demultiplex samples based on index (https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/6.0/using/mkfastq).
+* `FastQC`: FastQC calculates quality metrics on raw sequencing reads (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). MultiQC summarizes FastQC reports into one document (https://multiqc.info/).
+* `multiQC`: Compile fastQC and demux metrics in multiqc report
+* `md5sum`: md5sum of all generated files
+
+
 ## USAGE
 
 1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-rna-10x/tree/master/container/sc-rna-10x.v6
@@ -50,16 +60,8 @@ Si2,Sn2,SI-GA-H9,2021_012
 Sample3,S3_1,SI-GA-C9,2021_013
 Sample4,S2_3,SI-GA-C9,2021_013
 ``` 
-### Pipeline steps:
 
-Cellranger version: cellranger v6.0 
-
-* `Demultiplexing` (cellranger mkfastq): Converts raw basecalls to fastq, and demultiplex samples based on index (https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/6.0/using/mkfastq).
-* `FastQC`: FastQC calculates quality metrics on raw sequencing reads (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). MultiQC summarizes FastQC reports into one document (https://multiqc.info/).
-* `multiQC`: Compile fastQC and demux metrics in multiqc report
-* `md5sum`: md5sum of all generated files
-
-### Output:
+## Output:
 * ctg-PROJ_ID-output
     * `qc`: Quality control output. 
         * fastqc output (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
@@ -69,6 +71,6 @@ Cellranger version: cellranger v6.0
 
 
 
-### Container
+## Container
 https://github.com/perllb/ctg-sc-rna-10x/tree/master/container/sc-rna-10x.v6
 
