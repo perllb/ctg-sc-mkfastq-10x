@@ -13,16 +13,6 @@ Cellranger version: cellranger v6.0
 * `md5sum`: md5sum of all generated files
 
 
-## USAGE
-
-1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-rna-10x/tree/master/container/sc-rna-10x.v6
-2. Edit your samplesheet to match the example samplesheet. See section `SampleSheet` below
-3. Edit the nextflow.config file to fit your project and system. 
-4. Run pipeline 
-```
-nohup nextflow run pipe-sc-mkfastq-10x.nf > log.pipe-sc-mkfastq-10x.txt &
-```
-
 ## Input files
 
 The following files must be in the runfolder to start pipeline successfully.
@@ -60,6 +50,39 @@ Si2,Sn2,SI-GA-H9,2021_012
 Sample3,S3_1,SI-GA-C9,2021_013
 Sample4,S2_3,SI-GA-C9,2021_013
 ``` 
+
+
+## USAGE NEXTFLOW
+
+1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-rna-10x/tree/master/container/sc-rna-10x.v6
+2. Edit your samplesheet to match the example samplesheet. See section `SampleSheet` below
+3. Edit the nextflow.config file to fit your project and system. 
+4. Run pipeline 
+```
+nohup nextflow run pipe-sc-mkfastq-10x.nf > log.pipe-sc-mkfastq-10x.txt &
+```
+
+## USAGE DRIVER
+- Execute from within runfolder!
+
+### Run with default 
+Assumes
+- `CTG_SampleSheet.sc-mkfastq-10x.csv` is in runfolder 
+- Dual index
+```
+sc-mkfastq-10x-driver 
+```
+
+### Run with single index 
+Assumes
+- `CTG_SampleSheet.sc-mkfastq-10x.csv` is in runfolder 
+```
+sc-mkfastq-10x-driver -a
+```
+### Run with specific samplesheet 
+```
+sc-mkfastq-10x-driver -s /path/to/my_special_samplesheet.csv
+```
 
 ## Output:
 * ctg-PROJ_ID-output
